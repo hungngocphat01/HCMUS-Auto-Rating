@@ -20,3 +20,25 @@ Script này được cập nhật lần cuối vào ngày 30/12/2020.
   ```js
   DanhGia("th", "3-5");
   ```
+## Tham khảo
+Cấu trúc các trang đánh giá lý thuyết và thực hành (HK1, 2020-2021)
+- Trang 1: 5 hoặc 8 tiêu chí
+- Trang 2: 5 hoặc 4 tiêu chí
+- Trang 3: 6 hoặc 6 tiêu chí
+- Trang 4: 3 hoặc 3 tiêu chí
+- Trang 5: câu hỏi tự trả lời
+
+Một số mẫu xpath để tham chiếu get radio button
+```js
+Trang 1
+/html/body/form/div[3]/div[6]/div[4]/div/div[2]/div[2]/div[3]/div[3]/table[1]/tbody/tr/td[3]/input[5]
+
+Trang 2
+// /html/body/form/div[3]/div[6]/div[4]/div/div[2]/div[2]/div[4]/div[3]/table[1]/tbody/tr/td[3]/input[5]
+
+Trang 3
+// /html/body/form/div[3]/div[6]/div[4]/div/div[2]/div[2]/div[5]/div[3]/table[1]/tbody/tr/td[3]/input[5]
+
+Nút 4 trang 3
+// /html/body/form/div[3]/div[6]/div[4]/div/div[2]/div[2]/div[5]/div[3]/table[4]/tbody/tr/td[3]/input[5]
+```
