@@ -28,7 +28,7 @@ function DanhGia(type=null, rating=null) {
     else if (type == "lt")
         type = true;
     else if (type = "th")
-        type = true;
+        type = false;
     else {
         alert("Không đúng loại môn học. Vui lòng thử lại: \"lt\" hoặc \"th\".");
         return;
