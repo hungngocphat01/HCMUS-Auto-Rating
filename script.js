@@ -27,7 +27,7 @@ function DanhGia(type=null, rating=null) {
         type = confirm("Bấm OK nếu là môn lý thuyết, Cancel nếu là môn thực hành.");
     else if (type == "lt")
         type = true;
-    else if (type = "th")
+    else if (type == "th")
         type = false;
     else {
         alert("Không đúng loại môn học. Vui lòng thử lại: \"lt\" hoặc \"th\".");
