@@ -18,28 +18,33 @@ function getRandomInt(min, max) {
   
 
 // Hàm auto đánh giá
-function DanhGia() {
+function DanhGia(type=null, rating=null) {
     var cont = confirm("Cảnh báo: script này đã được cập nhật lần cuối vào " + updated_time + ", không đảm bảo sẽ tiếp tục hoạt động vào học kì sau đó. Bạn có muốn tiếp tục?");
     if (!cont) {
         return;
     }
+    if (type == null)
+        type = confirm("Bấm OK nếu là môn lý thuyết, Cancel nếu là môn thực hành.");
+    else if (type == "lt")
+        type = true;
+    else if (type = "th")
+        type = true;
 
-    var type = confirm("Bấm OK nếu là môn lý thuyết, Cancel nếu là môn thực hành.");
-
-    var rating = 0;
     do {
-        rating = prompt("Nhập điểm (1 - 5) mà bạn muốn đánh giá cho tất cả các ô. Nếu muốn random, hãy nhập 2 số phân cách bởi dấu phẩy.");
-        if (rating.search(",") != -1) {
-            rating = rating.split(",");
-            if (rating.length > 2) {
-                rating.length = 2;
-            }
-            for (var i = 0; i < rating.length; i++) {
-                rating[i] = parseInt(rating[i], 10);
-                if (rating[i] < 1 || rating[i] > 5) {
-                    alert("Chỉ được đánh giá từ 1 - 5.");
-                    return;
+        if (rating == null)
+            rating = prompt("Nhập điểm (1 - 5) mà bạn muốn đánh giá cho tất cả các ô. Nếu muốn random, hãy nhập 2 số phân cách bởi dấu phẩy.");
+        
+        if (isNaN(rating) && rating.search(",") != -1) {
+                rating = rating.split(",");
+                if (rating.length > 2) {
+                    rating.length = 2;
                 }
+                for (var i = 0; i < rating.length; i++) {
+                    rating[i] = parseInt(rating[i], 10);
+                    if (rating[i] < 1 || rating[i] > 5) {
+                        alert("Chỉ được đánh giá từ 1 - 5.");
+                        return;
+                    }
             }
         }
         else if (rating < 1 || rating > 5) {
