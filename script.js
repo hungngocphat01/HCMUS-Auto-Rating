@@ -29,13 +29,17 @@ function DanhGia(type=null, rating=null) {
         type = true;
     else if (type = "th")
         type = true;
+    else {
+        alert("Không đúng loại môn học. Vui lòng thử lại: \"lt\" hoặc \"th\".");
+        return;
+    }
 
     do {
         if (rating == null)
-            rating = prompt("Nhập điểm (1 - 5) mà bạn muốn đánh giá cho tất cả các ô. Nếu muốn random, hãy nhập 2 số phân cách bởi dấu phẩy.");
+            rating = prompt("Nhập điểm (1 - 5) mà bạn muốn đánh giá cho tất cả các ô. Nếu muốn random, hãy nhập 2 số phân cách bởi dấu gạch ngang -.");
         
-        if (isNaN(rating) && rating.search(",") != -1) {
-                rating = rating.split(",");
+        if (isNaN(rating) && rating.search("-") != -1) {
+                rating = rating.split("-");
                 if (rating.length > 2) {
                     rating.length = 2;
                 }
