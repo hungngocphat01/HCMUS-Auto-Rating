@@ -1,44 +1,36 @@
 # HCMUS-Auto-Rating
 Script JS đánh giá môn học tự động trên portal trường ĐH KHTN, ĐHQG-HCM.<br>
-Script này được cập nhật lần cuối vào ngày 30/12/2020.
+Script này được cập nhật lần cuối vào ngày 21/09/2021.
 ## Mục đích
 - Lười. Kì nào cũng phải đánh giá gần chục môn, bấm hoài mỏi tay.
 ## Cách sử dụng
-- Copy nội dung file `script.js` paste vào console của trình duyệt.
-- Với mỗi môn, bấm vào phần `Đánh giá`, sau đó gọi hàm `DanhGia()`(gõ thủ công vào console trình duyệt).
-- Làm theo hướng dẫn trên màn hình.
-  - Chọn loại môn (lý thuyết hay thực hành).
-  - Muốn đánh giá môn đó bao nhiêu "sao" (tất cả các mục).
-  - Có thể cho số "sao" đánh giá nằm ngẫu nhiên trong 1 khoảng bằng cách gõ vào 2 đầu mút của khoảng đó, phân cách nhau bởi dấu gạch ngang `-`. Các "sao" được tạo ngẫu nhiên theo phân phối đều.
-## Cách sử dụng nâng cao
-- Có thể truyền trực tiếp 2 tham số là loại môn (`"lt"`, `"th"`) và điểm đánh giá vào hàm theo thứ tự đã nêu để tiết kiệm thời gian.
-- Ví dụ: đánh giá môn lý thuyết tất cả đều 5 điểm:
-  ```js
-  DanhGia("lt", 5)
-  ```
-- Ví dụ: đánh giá môn thực hành random từ 3 tới 5 điểm:
-  ```js
-  DanhGia("th", "3-5");
-  ```
-## Tham khảo
-Cấu trúc các trang đánh giá lý thuyết và thực hành (HK1, 2020-2021)
-- Trang 1: 5 hoặc 8 tiêu chí
-- Trang 2: 5 hoặc 4 tiêu chí
-- Trang 3: 6 hoặc 6 tiêu chí
-- Trang 4: 3 hoặc 3 tiêu chí
-- Trang 5: câu hỏi tự trả lời
-
-Một số mẫu xpath để tham chiếu get radio button
+- Với mỗi môn, bấm vào phần `Đánh giá` sao cho hiện ra trang đánh giá đầu tiên.
+- Copy nội dung file `script.js` vào console trình duyệt (F12 -> Console).
+- Gọi hàm đánh giá: 
 ```js
-Trang 1
-/html/body/form/div[3]/div[6]/div[4]/div/div[2]/div[2]/div[3]/div[3]/table[1]/tbody/tr/td[3]/input[5]
+danhGia(lt, star);
+```
+Trong đó `lt = true` nếu là môn lý thuyết, `false` nếu là môn thực hành.
+Ví dụ: nếu môn muốn đánh giá là môn thực hành và muốn đánh giá tất cả là 5 sao, gọi hàm:
+```js 
+danhGia(false, 5);
+```
 
-Trang 2
-// /html/body/form/div[3]/div[6]/div[4]/div/div[2]/div[2]/div[4]/div[3]/table[1]/tbody/tr/td[3]/input[5]
+## Note
+Javascript selector của các button trong trang đánh giá
+```
+(page, row, button)
+(p, r, b) #section-p > div.section-questions-ranking > table:nth-child(r) > tbody > tr > td:nth-child(3) > input[type=radio]:nth-child(b)
+========================================================================================================================================
+(1, 1, 3) #section-0 > div.section-questions-ranking > table:nth-child(1) > tbody > tr > td:nth-child(3) > input[type=radio]:nth-child(3)
+(1, 1, 5) #section-0 > div.section-questions-ranking > table:nth-child(1) > tbody > tr > td:nth-child(3) > input[type=radio]:nth-child(5)
+(1, 2, 5) #section-0 > div.section-questions-ranking > table:nth-child(2) > tbody > tr > td:nth-child(3) > input[type=radio]:nth-child(5)
+(1, 3, 4) #section-0 > div.section-questions-ranking > table:nth-child(3) > tbody > tr > td:nth-child(3) > input[type=radio]:nth-child(4)
+(3, 1, 5) #section-2 > div.section-questions-ranking > table:nth-child(1) > tbody > tr > td:nth-child(3) > input[type=radio]:nth-child(5)
 
-Trang 3
-// /html/body/form/div[3]/div[6]/div[4]/div/div[2]/div[2]/div[5]/div[3]/table[1]/tbody/tr/td[3]/input[5]
 
-Nút 4 trang 3
-// /html/body/form/div[3]/div[6]/div[4]/div/div[2]/div[2]/div[5]/div[3]/table[4]/tbody/tr/td[3]/input[5]
+Next btn: #formActions > input[type=button]:nth-child(3)
+#formActions > input[type=button]:nth-child(3)
+
+Năm 2021 mà wifi của trường như mạng dial-up
 ```
