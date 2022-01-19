@@ -1,4 +1,4 @@
-const structureLyThuyet = [5, 0, 4, 13, 4, 0, 0, 3];
+const structureLyThuyet = [5, 0, 4, 11, 0, 8, 0, 3];
 const structureThucHanh = [6, 0, 4, 11, 4, 0, 3];
 
 function danhGia(lt, star) {
